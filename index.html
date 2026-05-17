@@ -6,58 +6,185 @@
     <title>Flow - Baleeira Tradicional Paraty</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Georgia, serif; color: #2c3e50; }
+        
+        body { 
+            font-family: Georgia, serif; 
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+        
+        /* CORES DO BARCO: Amarelo #F5B800, Branco #FFFFFF, Azul náutico #034078 */
         
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1600') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
+            position: relative;
         }
         
-        .hero h1 { font-size: 5rem; font-weight: 300; margin-bottom: 1rem; }
-        .hero p { font-size: 1.4rem; max-width: 700px; margin: 0 auto; }
+        .hero h1 { 
+            font-size: 6rem; 
+            font-weight: 300; 
+            margin-bottom: 1rem;
+            color: #F5B800;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+        }
         
-        section { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
-        h2 { font-size: 2.5rem; color: #034078; margin-bottom: 2rem; 
-             border-bottom: 3px solid #FFC857; display: inline-block; }
+        .hero p { 
+            font-size: 1.5rem; 
+            max-width: 700px; 
+            margin: 0 auto;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-                gap: 2rem; margin: 2rem 0; }
-        .card { background: white; padding: 2rem; border-radius: 10px; 
-                box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .card h3 { color: #034078; margin-bottom: 1rem; font-size: 1.3rem; }
-        .card p { line-height: 1.8; }
+        section { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 4rem 2rem; 
+        }
         
-        .price { background: linear-gradient(135deg, #034078, #1282A2); 
-                 color: white; padding: 3rem; border-radius: 15px; 
-                 text-align: center; margin: 3rem 0; }
-        .price h2 { color: white; border: none; font-size: 3.5rem; }
+        h2 { 
+            font-size: 2.8rem; 
+            color: #034078; 
+            margin-bottom: 2rem;
+            border-bottom: 4px solid #F5B800;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
         
-        .premium { background: white; color: #034078; padding: 2.5rem; 
-                   border-radius: 12px; margin-top: 2rem; }
+        /* GALERIA DE FOTOS */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
         
-        .btn { display: inline-block; background: #FFC857; color: #034078; 
-               padding: 1.2rem 2.5rem; border-radius: 50px; text-decoration: none; 
-               font-weight: bold; margin: 1rem; transition: 0.3s; font-size: 1.1rem; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        .photo-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
         
-        footer { background: #034078; color: white; text-align: center; padding: 2rem; }
+        .photo-item:hover {
+            transform: translateY(-10px);
+        }
         
-        .inventory-section { background: #f8f9fa; }
+        .photo-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+            margin: 2rem 0; 
+        }
+        
+        .card { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #F5B800;
+        }
+        
+        .card h3 { 
+            color: #034078; 
+            margin-bottom: 1rem; 
+            font-size: 1.3rem;
+        }
+        
+        .card p { 
+            line-height: 1.9; 
+        }
+        
+        .price { 
+            background: linear-gradient(135deg, #034078, #F5B800); 
+            color: white; 
+            padding: 3rem; 
+            border-radius: 20px;
+            text-align: center; 
+            margin: 3rem 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .price h2 { 
+            color: white; 
+            border: none; 
+            font-size: 4rem;
+        }
+        
+        .premium { 
+            background: white; 
+            color: #034078; 
+            padding: 2.5rem;
+            border-radius: 15px; 
+            margin-top: 2rem;
+        }
+        
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin: 1.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #034078, #F5B800);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        
+        footer { 
+            background: #034078; 
+            color: white; 
+            text-align: center; 
+            padding: 2.5rem;
+        }
         
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3.5rem; }
+            .photo-gallery { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+<!-- HERO -->
 <div class="hero">
     <div>
         <h1>Flow</h1>
@@ -65,33 +192,73 @@
     </div>
 </div>
 
+<!-- GALERIA DE FOTOS -->
+<section style="background: white;">
+    <h2>A Jornada da Flow</h2>
+    <div class="photo-gallery">
+        <div class="photo-item">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800" alt="Flow navegando">
+            <div class="photo-caption">Flow navegando em Paraty - tradição preservada</div>
+        </div>
+        <div class="photo-item">
+            <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=800" alt="Antes da restauração">
+            <div class="photo-caption">Antes da restauração - encontrada em Paraty</div>
+        </div>
+        <div class="photo-item">
+            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800" alt="Durante a restauração">
+            <div class="photo-caption">Processo de restauração - preservando cada detalhe</div>
+        </div>
+        <div class="photo-item">
+            <img src="https://images.unsplash.com/photo-1530870110042-98b2cb110834?w=800" alt="Motor Yanmar">
+            <div class="photo-caption">Motor Yanmar B18 retificado - coração renovado</div>
+        </div>
+        <div class="photo-item">
+            <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=800" alt="Madeira tradicional">
+            <div class="photo-caption">Madeira tradicional - estrutura revisada</div>
+        </div>
+        <div class="photo-item">
+            <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800" alt="Flow restaurada">
+            <div class="photo-caption">Flow restaurada - pronta para continuar sua história</div>
+        </div>
+    </div>
+</section>
+
+<!-- HISTÓRIA COMPLETA -->
 <section>
     <h2>🌊 História</h2>
-    <p style="font-size: 1.15rem; line-height: 1.9; margin-top: 1.5rem;">
-        As baleeiras fizeram parte da cultura marítima brasileira durante gerações. 
-        Inspiradas nas embarcações trazidas pelos açorianos e adaptadas pelos pescadores 
-        do litoral brasileiro, tornaram-se símbolo da pesca artesanal e da vida no mar. 
-        Hoje quase não se fabricam mais embarcações como esta.
+    <p style="font-size: 1.15rem; line-height: 1.9; margin-bottom: 1.5rem;">
+        As baleeiras fizeram parte da cultura marítima brasileira durante gerações. Inspiradas nas 
+        embarcações trazidas pelos açorianos e adaptadas pelos pescadores do litoral brasileiro, 
+        tornaram-se símbolo da pesca artesanal e da vida no mar. Hoje quase não se fabricam mais 
+        embarcações como esta.
     </p>
-    <p style="font-size: 1.15rem; line-height: 1.9; margin-top: 1rem;">
+    <p style="font-size: 1.15rem; line-height: 1.9; margin-bottom: 1.5rem;">
         A "Flow" foi encontrada em Paraty e passou por um processo completo de revitalização 
         estrutural e mecânica, preservando sua identidade original e mantendo viva a essência 
         das embarcações tradicionais de madeira que marcaram o litoral brasileiro.
     </p>
-</section>
-
-<section style="background: white;">
-    <h2>🛠️ Restauração</h2>
-    <p style="text-align: center; font-size: 3.5rem; font-weight: bold; 
-              color: #034078; margin: 2rem 0;">R$ 90.000</p>
-    <p style="text-align: center; font-size: 1.2rem; color: #666;">
-        Investidos entre: compra da embarcação, motor Yanmar B18 retificado, 
-        eixo inox novo, hélice nova, revisão estrutural completa, sistema elétrico, 
-        sistema de combustível, acabamento interno, pintura e revisão mecânica.
+    <p style="font-size: 1.15rem; line-height: 1.9;">
+        Mais do que uma reforma, o projeto buscou respeitar a história do barco e transformá-lo 
+        em uma embarcação pronta para continuar navegando por muitos anos.
     </p>
 </section>
 
-<section class="inventory-section">
+<!-- RESTAURAÇÃO -->
+<section style="background: white;">
+    <h2>🛠️ Restauração</h2>
+    <p style="text-align: center; font-size: 4rem; font-weight: bold; 
+              color: #F5B800; margin: 2rem 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
+        R$ 90.000
+    </p>
+    <p style="text-align: center; font-size: 1.2rem; color: #666; line-height: 1.8;">
+        Investidos entre: compra da embarcação, motor Yanmar B18 retificado, 
+        eixo inox novo, hélice nova, revisão estrutural completa, sistema elétrico, 
+        sistema de combustível, acabamento interno, pintura e revisão mecânica total.
+    </p>
+</section>
+
+<!-- INVENTÁRIO -->
+<section style="background: #f8f9fa;">
     <h2>⚓ Inventário Completo</h2>
     <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #666;">
         📍 <strong>Localização:</strong> Paraty / RJ
@@ -99,7 +266,7 @@
     
     <div class="grid">
         <div class="card">
-            <h3>⚓ Sistema de Propulsão</h3>
+            <h3>Sistema de Propulsão</h3>
             <p>
                 ✔ Motor Yanmar B18 retificado<br>
                 ✔ Hélice nova<br>
@@ -111,13 +278,10 @@
         </div>
         
         <div class="card">
-            <h3>🛟 Segurança</h3>
+            <h3>Segurança & Ancoragem</h3>
             <p>
                 ✔ 14 coletes salva-vidas<br>
-                ✔ 2 bombas de porão
-            </p>
-            <h3 style="margin-top: 1.5rem;">⚓ Ancoragem</h3>
-            <p>
+                ✔ 2 bombas de porão<br>
                 ✔ 1 âncora galvanizada 7,5 kg (Bruce)<br>
                 ✔ Corrente inox + cabo<br>
                 ✔ 1 âncora galvanizada 2,5 kg<br>
@@ -126,7 +290,7 @@
         </div>
         
         <div class="card">
-            <h3>💡 Sistema Elétrico</h3>
+            <h3>Sistema Elétrico</h3>
             <p>
                 ✔ Painel elétrico completo<br>
                 ✔ Luzes de navegação<br>
@@ -138,7 +302,7 @@
         </div>
         
         <div class="card">
-            <h3>⛽ Combustível & Acabamento</h3>
+            <h3>Combustível & Acabamento</h3>
             <p>
                 ✔ Tanque 60L com pescador<br>
                 ✔ Mangueiras e conexões revisadas<br>
@@ -150,10 +314,11 @@
     </div>
 </section>
 
+<!-- CUIDADOS -->
 <section style="background: white;">
     <h2>🌅 Embarcações de Madeira Exigem Cuidado</h2>
     <p style="font-size: 1.15rem; line-height: 1.8; margin-top: 1rem;">
-        Madeira é viva. E isso faz parte do charme. Barcos tradicionais de madeira 
+        <strong>Madeira é viva. E isso faz parte do charme.</strong> Barcos tradicionais de madeira 
         exigem manutenção periódica e preventiva — especialmente quando utilizados no mar.
     </p>
     <p style="font-size: 1.15rem; line-height: 1.8; margin-top: 1rem;">
@@ -161,8 +326,13 @@
         para: revisão estrutural, pintura de fundo, inspeção do casco, manutenção do 
         calafeto e preservação da madeira.
     </p>
+    <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem; font-style: italic; color: #666;">
+        Esse cuidado faz parte da cultura náutica tradicional e é exatamente o que mantém 
+        essas embarcações vivas por décadas.
+    </p>
 </section>
 
+<!-- PREÇO -->
 <section>
     <div class="price">
         <h2>R$ 69.000</h2>
@@ -171,10 +341,10 @@
         </p>
         
         <div class="premium">
-            <h3 style="font-size: 2.2rem; color: #1282A2; margin-bottom: 1.5rem;">
+            <h3 style="font-size: 2.2rem; color: #F5B800; margin-bottom: 1.5rem;">
                 Opção de Entrega Premium
             </h3>
-            <p style="font-size: 2.5rem; font-weight: bold; margin-bottom: 1.5rem;">
+            <p style="font-size: 2.5rem; font-weight: bold; margin-bottom: 1.5rem; color: #034078;">
                 + R$ 15.000
             </p>
             <p style="font-size: 1.1rem; line-height: 2; text-align: left;">
@@ -192,8 +362,8 @@
         </div>
     </div>
     
-    <div style="background: #f0f8ff; padding: 2rem; border-radius: 10px; 
-                border-left: 4px solid #034078; margin-top: 2rem;">
+    <div style="background: #fff8e1; padding: 2rem; border-radius: 10px; 
+                border-left: 4px solid #F5B800; margin-top: 2rem;">
         <p style="font-size: 1.1rem; line-height: 1.8;">
             <strong>Por transparência, recomenda-se:</strong><br>
             • Substituição de todo o compensado do teto<br>
@@ -207,15 +377,55 @@
     </div>
 </section>
 
+<!-- PARA QUEM É -->
 <section style="background: white;">
     <h2>🌊 Para Quem É Este Barco</h2>
     <p style="font-size: 1.3rem; margin: 1.5rem 0; font-style: italic; color: #666;">
         A "Flow" não é para qualquer comprador.
     </p>
-    <p style="font-size: 1.15rem; line-height: 2; margin-top: 1rem;">
+    <p style="font-size: 1.15rem; line-height: 2.2; margin-top: 1rem;">
         <strong>Ela é para quem:</strong><br>
         • Entende o valor de embarcações tradicionais<br>
         • Quer trabalhar com turismo de experiência<br>
         • Valoriza autenticidade<br>
         • Deseja um barco com presença e identidade<br>
-        • Enten
+        • Entende que histórias criam valor
+    </p>
+    <p style="font-size: 1.2rem; margin-top: 2rem; font-style: italic; 
+              color: #034078; text-align: center; line-height: 1.8;">
+        A "Flow" não compete com barcos industriais modernos.<br>
+        Ela compete no território da autenticidade, da tradição e da experiência.
+    </p>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+    <h2 style="color: white; border: none; font-size: 3.2rem; line-height: 1.4; margin-bottom: 2rem;">
+        Algumas embarcações envelhecem.<br>Outras viram patrimônio.
+    </h2>
+    <p style="font-size: 1.4rem; margin: 2.5rem auto; max-width: 800px; line-height: 1.8;">
+        A "Flow" é uma oportunidade rara de continuar a história de uma das 
+        embarcações mais tradicionais do litoral brasileiro.
+    </p>
+    <div style="margin: 3rem 0;">
+        <p style="font-size: 1.4rem;">📍 Paraty / RJ</p>
+        <p style="font-size: 3rem; font-weight: bold; margin: 1.5rem 0;">
+            💰 R$ 69.000
+        </p>
+        <p style="font-size: 1.3rem;">🔧 Opção Premium: + R$ 15.000</p>
+    </div>
+    <a href="https://wa.me/5521988230888?text=Olá!%20Tenho%20interesse%20na%20baleeira%20Flow" 
+       class="whatsapp-btn" target="_blank">
+        💬 Falar no WhatsApp
+    </a>
+</section>
+
+<footer>
+    <p style="font-size: 1.1rem;">© 2026 Flow - Baleeira Tradicional</p>
+    <p style="margin-top: 0.5rem; opacity: 0.9;">
+        Paraty, RJ | Preservando a tradição náutica brasileira
+    </p>
+</footer>
+
+</body>
+</html>
